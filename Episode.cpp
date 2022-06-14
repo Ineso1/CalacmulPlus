@@ -1,51 +1,31 @@
 #include "Episode.h"
 
 Episode::Episode(){
-    title = "";
-    duration = 0;
     season = 0;
-    classification = "";
 }
 
-Episode::Episode(std::string title, int duration, int season, std::string classification){
-    this -> title = title;
-    this -> duration = duration;
+Episode::Episode(std::string name, double duration, std::string classification, std::string synopsis, std::string url, int season):Video(name, duration, classification, synopsis, url){
     this -> season = season;
-    this -> classification = classification;
 }
 
-std::string Episode::getTitle() const{
-    return title;
-}
-
-int Episode::getDuration() const{
-    return duration;
-}
-
-int Episode::getSeason() const{
+int Episode::getSeason(){
     return season;
 }
 
-std::string Episode::getClassification() const{
-    return classification;
-}
-
-void Episode::setTitle(std::string title){
-    this->title = title;
-}
-
-void Episode::setDuration(int duration){
-    this->duration = duration;
-}
-
 void Episode::setSeason(int season){
-    this->season = season;
+    this -> season = season;
 }
 
-void Episode::setClassification(std::string classification){
-    this->classification = classification;
+std::ostream &operator << (std::ostream & salida, Episode& ep){
+    salida << "\n" << ep.Video::getName() << "\nDuracion:\t" << ep.Video::getDuration() << "\nClasificacion:\t" << ep.Video::getClassification() << "\nSynopsis:\t" <<  ep.Video::getSynopsis() << "\nUrl:\t" << ep.Video::getUrl() << "\nSeasons:\t" << ep.getSeason() << std::endl;
+    return salida;
 }
 
-void Episode::printEpisode(){
-    std::cout<<"-------EPISODE DETAILS---------\n" << "-Title: " << title << std::endl << "-Duration: " << duration << std::endl <<"-Season" << season << std::endl << "-Classification: " << classification << std::endl;
+std::istream &operator >> (std::istream & entrada, Episode& ep){
+    std::string name, classification, synopsis, url;
+    double duration;
+    int season;
+    entrada >> name >> duration >> classification >>  synopsis >> url >> season;
+    ep = Episode(name, duration, classification, synopsis, url, season);
+    return entrada;
 }

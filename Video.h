@@ -4,22 +4,30 @@
 
 class Video{
     private:
-        int id;
         std::string name;
-        int duration;
-        double rate;
+        double duration;
+        std::string classification;
+        std::string synopsis;
+        std::string url;
     public:
         Video();
-        Video(int,std::string,int,double);
-        int getId() const;
-        std::string getName() const;
-        int getDuration() const;
-        double getRate() const;
-        void setId(int);
+        Video(std::string, double, std::string, std::string, std::string);
+        std::string getName();
+        double getDuration();
+        std::string getClassification();
+        std::string getSynopsis();
+        std::string getUrl();
+
         void setName(std::string);
-        void setDuration(int);
-        void setRate(double);
-        void printVideo();
+        void setDuration(float);
+        void setClassification(std::string);
+        void setSynopsis(std::string);
+        void setUrl(std::string);
+
+        friend std::ostream& operator<< (std::ostream &, const Video&);
+        
+        friend std::istream& operator>> (std::istream &, Video&);
+
 };
 
 #endif // VIDEO_H

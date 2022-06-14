@@ -1,26 +1,22 @@
 #ifndef EPISODE_H
 #define EPISODE_H
 #include <iostream>
+#include "Video.h"
 
-class Episode{
+class Episode:public Video{
     private:
-        std::string title;
-        int duration;
         int season;
-        std::string classification;
 
     public:
         Episode();
-        Episode(std::string, int, int, std::string);
-        std::string getTitle() const;
-        int getDuration() const;
-        int getSeason() const;
-        std::string getClassification() const; 
-        void setTitle(std::string);
-        void setDuration(int);
+        Episode(std::string, double, std::string, std::string, std::string, int);
+        int getSeason();
         void setSeason(int);
-        void setClassification(std::string);
-        void printEpisode();
+
+        friend std::ostream& operator<< (std::ostream &, const Episode&);
+        
+        friend std::istream& operator>> (std::istream &, Episode&);
+        
 };
 
 #endif // EPISODE_H

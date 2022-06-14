@@ -1,53 +1,67 @@
 #include "Video.h"
 
 Video::Video(){
-    id = 0;
-    name = "default";
+    name = "";
     duration = 0;
-    rate = 0;
+    classification = "";
+    synopsis = "";
+    url = "";
 }
 
-Video::Video(int id, std::string name, int duration, double rate){
-    this -> id  = id;
-    this -> name = name;
+Video::Video(std::string name, double duration,std::string classification, std::string synopsis, std::string url){
+    this -> name  = name;
     this -> duration = duration;
-    this -> rate =  rate;
+    this -> classification = classification;
+    this -> synopsis = synopsis;
+    this -> url =  url;
 }
 
-//Seccion getters
-int Video::getId() const{
-    return id;
-}
-
-std::string Video::getName() const{
+std::string Video::getName(){
     return name;
 }
 
-int Video::getDuration() const{
+double Video::getDuration(){
     return duration;
 }
 
-double Video::getRate() const{
-    return rate;
+std::string Video::getClassification(){
+    return classification;
 }
 
-//Seccion setters 
-void Video::setId(int id){
-    this -> id =  id;
+std::string Video::getSynopsis(){
+    return synopsis;
 }
 
-void Video::setName(int duration){
+std::string Video::getUrl(){
+    return url;
+}
+
+void Video::setName(std::string name){
+    this -> name = name;
+}
+
+void Video::setDuration(float duration){
     this -> duration = duration;
 }
 
-void Video::setDuration(int duration){
-    this -> duration =  duration;
+void Video::setClassification(std::string classification){
+    this -> classification = classification;
 }
 
-void Video::setRate(double rate){
-    this -> rate = rate;
+void Video::setSynopsis(std::string synopsis){
+    this -> synopsis = synopsis;
 }
 
-void Video::printVideo(){
-    std::cout << "-------VIDEO DETAILS---------\n" << "-ID: " << id << std::endl << "-Nombre: " << name << std::endl <<"-Duración" << duration << std::endl << "-Calificacion: " << rate << std::endl;
+void Video::setUrl(std::string url){
+    this -> url = url;
+}
+
+std::ostream &operator << (std::ostream & salida, const Video& video){
+    salida << "\n" << video.name << "\nDuracion:\t" << video.duration << "\nClasificacion:\t" << video.classification << "\nSynopsis:\t" <<  video.synopsis << "\nUrl:\t" << video.url << std::endl;
+    return salida;
+}
+
+std::istream &operator >> (std::istream & entrada, Video& video){
+    entrada >> video.name >> video.duration >> video.classification >>  video.synopsis >> video.url;
+    return entrada;
 }
