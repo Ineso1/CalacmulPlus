@@ -4,21 +4,24 @@
 #include <vector>
 #include "Episode.h"
 #include "Video.h"
+#include "Plus.h"
 
-class Movie:public Video{
+class Movie:public Video, public Plus{
     private:
-        std::vector <std::string*> cast;
+        float rate;
         std::string gender;
     public:
         Movie();
-        Movie(int, std::string, std::string , double, std::string, std::string);
-        std::string getCast() const;
-        std::string getGender() const;
-        void setCast(std::string);
+        Movie(std::string, double, std::string, std::string, std::string, float, std::string, bool);
+        float getRate();
+        std::string getGender();
+        void setRate(float);
         void setGender(std::string);
-        void printSynopsis();
-        void printReview();
-        void printMovie();
+        
+        friend std::ostream& operator<< (std::ostream &, const Movie&);
+        
+        friend std::istream& operator>> (std::istream &, Movie&);
+
 };
 
 #endif // MOVIE_H
