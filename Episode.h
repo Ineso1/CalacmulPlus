@@ -13,7 +13,7 @@ class Episode:public Video{
         int getSeason();
         void setSeason(int);
 
-        friend std::ostream& operator<< (std::ostream &, const Episode&);
+        friend std::ostream& operator<< (std::ostream &, Episode&);
         
         friend std::istream& operator>> (std::istream &, Episode&);
         

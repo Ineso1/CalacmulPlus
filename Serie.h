@@ -14,7 +14,7 @@ class Serie:public Plus{
     int seasons;
     public:
         Serie();
-        Serie(std::string, int, std::string, float, bool);
+        Serie(char, std::string, int, std::string, float);
         std::string getName();
         int getSeasons();
         std::string getGender();
@@ -26,7 +26,7 @@ class Serie:public Plus{
         Episode getEpisodes();
         void agregarEpisodio(Episode);
 
-        friend std::ostream& operator<< (std::ostream &, const Serie&);
+        friend std::ostream& operator<< (std::ostream &, Serie&);
         
         friend std::istream& operator>> (std::istream &, Serie&);
 };

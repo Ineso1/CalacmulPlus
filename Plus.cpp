@@ -1,10 +1,13 @@
 #include "Plus.h"
 
 Plus::Plus(){
-    cuenta = false;
+    cuenta = '0';
 }
 
-Plus::Plus(bool cuenta){
+Plus::Plus(char cuenta){
     this-> cuenta = cuenta;
 }
 
+char Plus::getCuenta(){
+    return cuenta;
+}

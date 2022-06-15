@@ -4,10 +4,12 @@
 
 class Plus{
     private:
-        bool cuenta;
+        char cuenta;
     public:
         Plus();
-        Plus(bool);
+        Plus(char);
+        virtual ~Plus() {}
+        char getCuenta();
 };
 
 #endif // PLUS_H
