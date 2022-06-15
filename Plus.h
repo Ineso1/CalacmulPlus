@@ -10,6 +10,7 @@ class Plus{
         Plus(char);
         virtual ~Plus() {}
         char getCuenta();
+        void setCuenta(char);
 };
 
 #endif // PLUS_H

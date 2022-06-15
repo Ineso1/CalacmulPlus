@@ -35,8 +35,7 @@ std::istream &operator >> (std::istream & entrada, Movie& mov){
     std::string name, classification, synopsis, url, gender;
     double duration;
     float rate;
-    char cuenta;
-    entrada >> cuenta >> name >> duration >> classification >>  synopsis >> url;
-    mov = Movie(cuenta, name, duration, classification, synopsis, url, rate, gender);
+    entrada >> name >> duration >> classification >>  synopsis >> url >> rate >> gender;
+    mov = Movie('0', name, duration, classification, synopsis, url, rate, gender);
     return entrada;
 }

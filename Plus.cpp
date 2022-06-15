@@ -11,3 +11,7 @@ Plus::Plus(char cuenta){
 char Plus::getCuenta(){
     return cuenta;
 }
+
+void Plus::setCuenta(char cuenta){
+    this -> cuenta = cuenta;
+}

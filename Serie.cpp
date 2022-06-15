@@ -59,8 +59,6 @@ std::ostream &operator << (std::ostream & salida, Serie& ser){
 }
 
 std::istream &operator >> (std::istream & entrada, Serie& ser){
-    char cuenta;
-    entrada >> cuenta >> ser.name >> ser.rate >> ser.gender >>  ser.seasons;
-    //ser::Plus(cuenta);
+    entrada >> ser.name >> ser.rate >> ser.gender >>  ser.seasons;
     return entrada;
 }

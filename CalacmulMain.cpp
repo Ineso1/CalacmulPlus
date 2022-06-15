@@ -8,7 +8,24 @@
 #include "Plus.h"
 using namespace std;
 
-vector<Plus> catalog;
+vector<Plus*> catalog;
+
+
+
+void printCatalog(){
+    for (int i = 0; i < catalog.size(); i++){
+        if(catalog[i]->getCuenta() == 'm'){
+            Movie *peli;
+            peli = dynamic_cast<Movie *>(catalog.at(i));
+            cout << *peli;
+        }
+        else if(catalog[i]->getCuenta() == 's'){
+            Serie *seri;
+            seri = dynamic_cast<Serie *>(catalog.at(i));
+            cout << *seri;
+        }
+    }
+}
 
 
 void cargarPlataforma(){
@@ -16,30 +33,48 @@ void cargarPlataforma(){
     archivo.open("Videos.txt");
     if (archivo.is_open()){
         char tipoVideo;
+
+
         while (archivo >> tipoVideo) {
             if (tipoVideo == 'm' ) {
+                
                 Movie peli;
                 archivo >> peli;  
-                catalog.push_back(peli);
+                peli.Plus::setCuenta(tipoVideo);
+
+                catalog.push_back(new Movie);
+                catalog[catalog.size()-1] = &peli;
+
+                cout << peli;
+
             }else if (tipoVideo == 's'){
+
                 Serie seri;
                 archivo >> seri;
-                catalog.push_back(seri);
+                seri.Plus::setCuenta(tipoVideo);
+                
+                catalog.push_back(new Serie);
+                catalog[catalog.size()-1] = &seri;
+
+                cout << seri;
+
                 }
             else if(tipoVideo =='e'){
                 Episode ep;
                 archivo >> ep;
+
             }
             }
         }
+
+        //printCatalog();
         archivo.close();
 
     }
 
 
-
 int main(){
-
+/*
     vector<Plus*> p1;
     Movie m1 ( 'm', "Garra", 120, "R", "Cuando_un_desafortunado_cazatalentos_de_basquetbol_encuentra", "https://www.youtube.com/watch?v=nM4iy0reaCA", 5, "Populares");
     Serie s1 ( 's', "StrangerThings", 4, "Suspenso", 5);
@@ -50,28 +85,31 @@ int main(){
     s1.agregarEpisodio(e1_s1);
     s1.agregarEpisodio(e2_s1);
 
-    p1.push_back(new Movie());
-    p1[0] = &m1;
+    catalog.push_back(new Movie());
+    catalog.push_back(new Serie());
+    catalog[0] = &m1;
+    catalog[1] = &s1;
+*/
 
-    if(p1[0]->getCuenta() == 'm'){
+    cargarPlataforma();
+    cout << catalog.size() << endl;
+    //printCatalog();
+
+    /*if(p1[1]->getCuenta() == 'm'){
 
 
         Movie *peli;
-        peli = dynamic_cast<Movie *>(p1.at(0));
+        peli = dynamic_cast<Movie *>(p1.at(1));
         cout << *peli;
     
     
     }
 
-    else if(p1[0]->getCuenta() == 's'){
+    else if(p1[1]->getCuenta() == 's'){
         Serie *seri;
-        seri = dynamic_cast<Serie *>(p1.at(0));
+        seri = dynamic_cast<Serie *>(p1.at(1));
         cout << *seri;
-    }
-
-    //cout << m1;
-    //cout << s1;
-    //cout << *p1[0];
+    }*/
 
     return 0;
     
