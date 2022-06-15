@@ -11,6 +11,9 @@ class Plus{
         virtual ~Plus() {}
         char getCuenta();
         void setCuenta(char);
+        virtual void getInfo();
+        friend std::ostream& operator<< (std::ostream &, Plus&);
+
 };
 
 #endif // PLUS_H

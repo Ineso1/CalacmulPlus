@@ -15,3 +15,12 @@ char Plus::getCuenta(){
 void Plus::setCuenta(char cuenta){
     this -> cuenta = cuenta;
 }
+
+void Plus::getInfo(){
+    std::cout<< std::endl;
+}
+
+std::ostream &operator << (std::ostream & salida, Plus& p){
+    salida << "\n" << p.getCuenta() << "\n";
+    return salida;
+}

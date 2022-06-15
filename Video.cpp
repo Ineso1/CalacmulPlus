@@ -8,12 +8,12 @@ Video::Video(){
     url = "";
 }
 
-Video::Video(std::string name, double duration,std::string classification, std::string synopsis, std::string url){
-    this -> name  = name;
-    this -> duration = duration;
-    this -> classification = classification;
-    this -> synopsis = synopsis;
-    this -> url =  url;
+Video::Video(std::string _name, double _duration,std::string _classification, std::string _synopsis, std::string _url){
+    this -> name  = _name;
+    this -> duration = _duration;
+    this -> classification = _classification;
+    this -> synopsis = _synopsis;
+    this -> url =  _url;
 }
 
 std::string Video::getName(){
@@ -36,24 +36,24 @@ std::string Video::getUrl(){
     return url;
 }
 
-void Video::setName(std::string name){
-    this -> name = name;
+void Video::setName(std::string _name){
+    name = _name;
 }
 
-void Video::setDuration(float duration){
-    this -> duration = duration;
+void Video::setDuration(float _duration){
+    duration = _duration;
 }
 
-void Video::setClassification(std::string classification){
-    this -> classification = classification;
+void Video::setClassification(std::string _classification){
+    classification = _classification;
 }
 
-void Video::setSynopsis(std::string synopsis){
-    this -> synopsis = synopsis;
+void Video::setSynopsis(std::string _synopsis){
+    synopsis = _synopsis;
 }
 
-void Video::setUrl(std::string url){
-    this -> url = url;
+void Video::setUrl(std::string _url){
+    url = _url;
 }
 
 std::ostream &operator << (std::ostream & salida, const Video& video){

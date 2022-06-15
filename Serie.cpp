@@ -30,7 +30,7 @@ float Serie::getRate(){
     return rate;
 }
 
-void Serie::setName(std::string){
+void Serie::setName(std::string name){
     this -> name = name;
 }
 
@@ -48,6 +48,11 @@ void Serie::setRate(float rate){
 
 void Serie::agregarEpisodio(Episode ep){
     episodes.push_back(ep);
+}
+
+void Serie::getInfo(){
+    Plus::getInfo();
+    std::cout << "Name: " <<getName()<<"\nRate: " << getRate() <<"\nEpisodios: " << getSeasons() <<std::endl;
 }
 
 std::ostream &operator << (std::ostream & salida, Serie& ser){

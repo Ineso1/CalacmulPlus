@@ -25,6 +25,8 @@ class Serie:public Plus{
         void setRate(float);
         Episode getEpisodes();
         void agregarEpisodio(Episode);
+        void getInfo() override;
+
 
         friend std::ostream& operator<< (std::ostream &, Serie&);
         
