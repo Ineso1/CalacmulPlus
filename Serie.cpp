@@ -7,7 +7,7 @@ Serie::Serie(){
     rate = 0;
 }
 
-Serie::Serie(std::string name, int seasons, std::string gender, float rate, bool cuenta):Plus(cuenta){
+Serie::Serie(char cuenta, std::string name, int seasons, std::string gender, float rate):Plus(cuenta){
     this -> name = name; 
     this -> seasons = seasons;
     this -> gender = gender;
@@ -51,7 +51,10 @@ void Serie::agregarEpisodio(Episode ep){
 }
 
 std::ostream &operator << (std::ostream & salida, Serie& ser){
-    salida << "\n" << ser.getName() << "\nRate:\t" << ser.getRate() << "\nGender:\t" << ser.getGender() << "\nSeasons:\t" <<  ser.getSeasons() << std::endl;
+    salida << "\n" << ser.getName() << "\nRate:\t" << ser.getRate() << "\nGender:\t" << ser.getGender() << "\nSeasons:\t" <<  ser.getSeasons() << "\nEpisodes:\n";
+    for (int i = 0; i < ser.episodes.size(); i++){
+        salida << "\tep " << i << ": "<< ser.episodes[i].getName() << std::endl;    
+    }
     return salida;
 }
 

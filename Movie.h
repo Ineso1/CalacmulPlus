@@ -12,13 +12,13 @@ class Movie:public Video, public Plus{
         std::string gender;
     public:
         Movie();
-        Movie(std::string, double, std::string, std::string, std::string, float, std::string, bool);
+        Movie(char, std::string, double, std::string, std::string, std::string, float, std::string);
         float getRate();
         std::string getGender();
         void setRate(float);
         void setGender(std::string);
         
-        friend std::ostream& operator<< (std::ostream &, const Movie&);
+        friend std::ostream& operator<< (std::ostream &, Movie&);
         
         friend std::istream& operator>> (std::istream &, Movie&);
 

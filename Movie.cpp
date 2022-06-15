@@ -5,7 +5,7 @@ Movie::Movie(){
     gender = " ";
 }
 
-Movie::Movie(std::string name, double duration, std::string classification, std::string synopsis, std::string url, float rate, std::string gender, bool cuenta):Video(name, duration, classification, synopsis, url),Plus(cuenta){
+Movie::Movie(char cuenta, std::string name, double duration, std::string classification, std::string synopsis, std::string url, float rate, std::string gender):Video(name, duration, classification, synopsis, url),Plus(cuenta){
     this -> rate = rate;
     this -> gender = gender;
 }
@@ -35,8 +35,7 @@ std::istream &operator >> (std::istream & entrada, Movie& mov){
     std::string name, classification, synopsis, url, gender;
     double duration;
     float rate;
-    bool cuenta;
-    entrada >> name >> duration >> classification >>  synopsis >> url >> cuenta;
-    mov = Movie(name, duration, classification, synopsis, url, rate, gender, cuenta);
+    entrada >> name >> duration >> classification >>  synopsis >> url >> rate >> gender;
+    mov = Movie('0', name, duration, classification, synopsis, url, rate, gender);
     return entrada;
 }
