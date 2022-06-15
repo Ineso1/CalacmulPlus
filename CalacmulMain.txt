@@ -8,11 +8,9 @@
 #include "Plus.h"
 using namespace std;
 
-vector<Plus*> catalog;
-
-
 Movie upCastPlus_Movie(Plus* obj){
     Movie* peli = dynamic_cast<Movie *>(obj);
+    cout<< *peli;
     return *peli;
 }
 
@@ -21,7 +19,7 @@ Serie upCastPlus_Serie(Plus* obj ){
     return *seri;
 }
 
-void printCatalog(){
+void printCatalog(vector<Plus*> &catalog){
     for (int i = 0; i < catalog.size(); i++)
     {
         if(catalog[i]->getCuenta() == 'm'){
@@ -35,7 +33,7 @@ void printCatalog(){
     }
 }
 
-void printNames(){
+void printNames(vector<Plus*> &catalog){
     for (int i = 0; i < catalog.size(); i++)
     {
       char typePlus = catalog.at(i) -> getCuenta();
@@ -51,7 +49,7 @@ void printNames(){
     }
 }
 
-void cargarPlataforma(){
+void cargarPlataforma(vector<Plus*> &catalog){
     ifstream archivo;
     archivo.open("Videos.txt");
     if (archivo.is_open()){
@@ -61,12 +59,13 @@ void cargarPlataforma(){
         while (archivo >> tipoVideo) {
             if (tipoVideo == 'm' ) {
                 
-                Movie peli;
+                Movie peli, prueba;
                 archivo >> peli;  
                 peli.Plus::setCuenta(tipoVideo);
 
                 catalog.push_back(new Movie);
                 catalog[catalog.size()-1] = &peli;
+                                
 
             }else if (tipoVideo == 's'){
 
@@ -93,7 +92,7 @@ void cargarPlataforma(){
             }
         }
 
-        printCatalog();
+        //printCatalog(catalog);
         archivo.close();
 
     }
@@ -101,28 +100,22 @@ void cargarPlataforma(){
 
 int main(){
 
-/*
-    vector<Plus*> p1;
-    Movie m1 ( 'm', "Garra", 120, "R", "Cuando_un_desafortunado_cazatalentos_de_basquetbol_encuentra", "https://www.youtube.com/watch?v=nM4iy0reaCA", 5, "Populares");
-    Serie s1 ( 's', "StrangerThings", 4, "Suspenso", 5);
-
-    Episode e1_s1 ( "Capitulo1", 50, "TV-14", "Will_es_testigo_de_algo_horroroso", "https://www.youtube.com/watch?v=Lpd6A7W4fYE", 1);
-    Episode e2_s1 ( "Capitulo2", 55, "TV-14", "Lucas_Mike_y_Dustin_intentan_hablar_con", "https://www.youtube.com/watch?v=Lpd6A7W4fYE", 1);
-    
-    s1.agregarEpisodio(e1_s1);
-    s1.agregarEpisodio(e2_s1);
-
-    catalog.push_back(new Movie());
-    catalog.push_back(new Serie());
-    catalog[0] = &m1;
-    catalog[1] = &s1;
-*/
-    //vector<Plus*> catalog;
-
-   cargarPlataforma();
+    vector<Plus*> plataform;
+    cargarPlataforma(plataform);
+    for (int i = 0; i < plataform.size(); i++)
+      {
+          if(plataform[i]->getCuenta() == 'm'){
+                Movie* mov = dynamic_cast<Movie *>(plataform.at(i));  
+            
+          }
+          else if(plataform[i]->getCuenta() == 's'){
+                Serie* seri = dynamic_cast<Serie *>(plataform.at(i));
+                seri -> imprime();
+          }
+    }
     try
     {
-        printCatalog();
+        printCatalog(plataform);
     }
     catch(const std::exception& e)
     {

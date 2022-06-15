@@ -26,6 +26,11 @@ void Movie::setGender(std::string gender){
     this -> gender = gender;
 }
 
+void Movie::getInfo(){
+    Plus::getInfo();
+    std::cout<<"Name: " <<Video::getName() <<"\nRate: " << getRate() << "\nDuracion: " << Video::getDuration() <<std::endl;
+}
+
 std::ostream &operator << (std::ostream & salida, Movie& mov){
     salida << "\n" << mov.Video::getName() << "\nDuracion:\t" << mov.Video::getDuration() << "\nClasificacion:\t" << mov.Video::getClassification() << "\nSynopsis:\t" <<  mov.Video::getSynopsis() << "\nUrl:\t" << mov.Video::getUrl() << "\nRate:\t" << mov.getRate() << "\nGender:\t" << mov.getGender() << std::endl;
     return salida;

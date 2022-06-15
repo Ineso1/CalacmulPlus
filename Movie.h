@@ -17,6 +17,7 @@ class Movie:public Video, public Plus{
         std::string getGender();
         void setRate(float);
         void setGender(std::string);
+        void getInfo() override;
         
         friend std::ostream& operator<< (std::ostream &, Movie&);
         
