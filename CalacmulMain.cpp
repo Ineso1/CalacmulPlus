@@ -11,22 +11,22 @@ using namespace std;
 vector<Plus*> catalog;
 
 
-
 void printCatalog(){
     for (int i = 0; i < catalog.size(); i++){
         if(catalog[i]->getCuenta() == 'm'){
             Movie *peli;
             peli = dynamic_cast<Movie *>(catalog.at(i));
             cout << *peli;
+            //cout << "iteracion" << catalog[i]->getCuenta() <<endl;
         }
         else if(catalog[i]->getCuenta() == 's'){
             Serie *seri;
             seri = dynamic_cast<Serie *>(catalog.at(i));
             cout << *seri;
+            //cout << "iteracion" << catalog[i]->getCuenta() <<endl;
         }
     }
 }
-
 
 void cargarPlataforma(){
     ifstream archivo;
@@ -45,7 +45,9 @@ void cargarPlataforma(){
                 catalog.push_back(new Movie);
                 catalog[catalog.size()-1] = &peli;
 
-                cout << peli;
+                //cout << peli;
+                cout<<catalog.size()-1<<endl;
+                printCatalog();
 
             }else if (tipoVideo == 's'){
 
@@ -56,14 +58,27 @@ void cargarPlataforma(){
                 catalog.push_back(new Serie);
                 catalog[catalog.size()-1] = &seri;
 
-                cout << seri;
+                //cout << seri;
+                printCatalog();
+                cout<<"..........."<<catalog.size()-1;
 
-                }
+
+                }/*
             else if(tipoVideo =='e'){
                 Episode ep;
+                Serie *seri;
                 archivo >> ep;
+                seri = dynamic_cast<Serie *>(catalog[catalog.size()-1]);
+                seri->agregarEpisodio(ep);
+                cout<<catalog.size()<<endl;
 
+                //catalog[catalog.size()] = seri;
+                //cout << catalog.size();
+            }*/
+            else{
+                break;
             }
+
             }
         }
 
@@ -74,6 +89,7 @@ void cargarPlataforma(){
 
 
 int main(){
+
 /*
     vector<Plus*> p1;
     Movie m1 ( 'm', "Garra", 120, "R", "Cuando_un_desafortunado_cazatalentos_de_basquetbol_encuentra", "https://www.youtube.com/watch?v=nM4iy0reaCA", 5, "Populares");
@@ -90,26 +106,13 @@ int main(){
     catalog[0] = &m1;
     catalog[1] = &s1;
 */
+    //vector<Plus*> catalog;
 
     cargarPlataforma();
-    cout << catalog.size() << endl;
+    cout << "Colaaaaa";
+    cout << endl << catalog.size() << endl;
+
     //printCatalog();
-
-    /*if(p1[1]->getCuenta() == 'm'){
-
-
-        Movie *peli;
-        peli = dynamic_cast<Movie *>(p1.at(1));
-        cout << *peli;
-    
-    
-    }
-
-    else if(p1[1]->getCuenta() == 's'){
-        Serie *seri;
-        seri = dynamic_cast<Serie *>(p1.at(1));
-        cout << *seri;
-    }*/
 
     return 0;
     
